@@ -44,7 +44,7 @@
         android:id="@+id/txt_marks"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:hint="Enter Name"
+        android:hint="Enter marks"
         android:textColorHint="@color/black"
         android:background="@color/white"
         android:inputType="number"
