@@ -48,7 +48,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllData(){
     SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
     Cursor cursor=sqLiteDatabase.rawQuery("select * from " +TABLE_NAME,null);
-    return cursor
+    return cursor;
+    }
+
+    public boolean updateData(String id ,String name , String marks){
+     SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+     ContentValues contentValues= new ContentValues();
+     contentValues.put(COL1,id);
+     contentValues.put(COL2,name);
+     contentValues.put(COL3,marks);
+
+      sqLiteDatabase.update(TABLE_NAME ,contentValues,"ID=?",new String[]{id});
+      return true;
     }
 
 
