@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL1="id";
     public static final String COL2="name";
     public static final String COL3="marks";
-//    public static final int versionname=1;
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -49,6 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
     Cursor cursor=sqLiteDatabase.rawQuery("select * from " +TABLE_NAME,null);
     return cursor;
+
     }
 
     public boolean updateData(String id ,String name , String marks){
@@ -62,22 +63,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
       return true;
     }
 
-
+   public  Integer deleteData(String id){
+       SQLiteDatabase database=this.getWritableDatabase();
+       return database.delete(TABLE_NAME,"ID=?",new String[]{id});
+   }
 }
 
-////    Data insert Method
-//   public  boolean insertData(String id,String name,String marks){
-//      SQLiteDatabase db=this.getWritableDatabase();
-//      ContentValues contentValues=new ContentValues();
-//      contentValues.put(COL1,id);
-//      contentValues.put(COL2,name);
-//      contentValues.put(COL3,marks);
-//     Long result=db.insert(TABLE_NAME,null,contentValues);
-//     if (result==1){
-//      return false;
-//     }else {
-//         return true;
-//     }
-//
-//   }
 
